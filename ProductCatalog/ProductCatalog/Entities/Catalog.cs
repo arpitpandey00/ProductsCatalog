@@ -28,19 +28,19 @@ namespace ProductCatalog.Entities
                 {
                     case "a":
                         Console.Clear();
-                        this.ProductCatalog();
+                        this.CategoryCatalog();
                         break;
                     case "b":
                         Console.Clear();
-                        this.CategoryCatalog();
+                        this.ProductCatalog();
                         break;
                     case "c":
                         exit = true;
                         Console.WriteLine("See You Soon\n Stay Safe");
                         break;
                     default:
-                        Console.Clear();
                         Console.WriteLine("Invalid Operatoin\nTry Again");
+                        Console.Clear();
                         break;
                 }
             }
@@ -57,8 +57,34 @@ namespace ProductCatalog.Entities
             bool Exit = false;
             while (Exit != true)
             {
+                this.OperationOnProducts = new OperationOnProducts();
                 switch (input)
                 {
+                    case "a":
+                        OperationOnProducts.AddProduct();
+                        Console.WriteLine("Want To Add More Product? (y/n)");
+                        var sub_Input = Console.ReadLine();
+                        if (sub_Input == "n")
+                        { Exit = true; }
+                        break;
+                    case "b":
+                        OperationOnProducts.DisplayAllProducts();
+                        break;
+                    case "c":
+                        OperationOnProducts.DeleteAProduct();
+                        break;
+                    case "d":
+                        OperationOnProducts.SearchAProduct();
+                        break;
+                    case "e":
+                        Exit = true;
+                        Console.WriteLine("Exiting..............");
+                        Console.Clear();
+                        this.DisplayCatalog();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Operation\nTry Again");
+                        break;
 
                 }
             }
@@ -77,8 +103,29 @@ namespace ProductCatalog.Entities
             {
             switch(input)
             {
+                    case "a":
+                        OperationOnCategory.AddCategory();
+                        break;
+                    case "b":
+                        OperationOnCategory.DisplayCategories();
+                        break;
+                    case "c":
+                        OperationOnCategory.DeleteCategory();
+                        break;
+                    case "d":
+                        OperationOnCategory.SearchCategory();
+                        break;
+                    case "e":
+                        Exit = true;
+                        Console.WriteLine("Exiting..............");
+                        Console.Clear();
+                        this.DisplayCatalog();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Operation\nTry Again");
+                        break;
 
-            }
+                }
             }
         }
     }

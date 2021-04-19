@@ -11,7 +11,7 @@ namespace ProductCatalog.Entities
         public string Name { get; set; }
         public string Manufacturer { get; set; }
 
-        public string ShortCode { get; set; }
+       // public string ShortCode { get; set; }
 
         public List<Category> Categories { get; set; }
 
@@ -21,7 +21,7 @@ namespace ProductCatalog.Entities
 
         public Product()
         {
-            AutoIncrement++;
+            ++AutoIncrement;
             Id = AutoIncrement;
         }
     }
