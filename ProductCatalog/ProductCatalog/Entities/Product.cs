@@ -21,8 +21,13 @@ namespace ProductCatalog.Entities
 
         public Product()
         {
-            ++AutoIncrement;
+            AutoIncrement++;
             Id = AutoIncrement;
+        }
+        public override string ToString()
+        {
+            
+            return $"Product {this.Name} is Manufactured by {this.Manufacturer} is for {this.SellingPrice} rupees.";
         }
     }
 }

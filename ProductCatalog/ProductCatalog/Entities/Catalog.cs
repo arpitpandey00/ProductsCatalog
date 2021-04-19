@@ -7,32 +7,31 @@ namespace ProductCatalog.Entities
 {
     public class Catalog
     {
-        public static OperationOnCategory OperationOnCategory { get; set; }
-        public OperationOnProducts OperationOnProducts  { get; set; }
-        public Catalog()
-        {
-            Catalog.OperationOnCategory = new OperationOnCategory();
-            this.OperationOnProducts = new OperationOnProducts();
-        }
+      OperationOnCategory operationOnCategory = new OperationOnCategory();
+       OperationOnProducts operationOnProducts = new OperationOnProducts();
         public void DisplayCatalog()
         {
-            Console.WriteLine("_______-----Welcome Home-----______");
-            Console.WriteLine("\na. Category");
-            Console.WriteLine("\nb. Product");
-            Console.WriteLine("\nc. Exit");
-            var input = Console.ReadLine().ToLower();
+           
+            //var input = Console.ReadLine().ToLower();
             bool exit = false;
             while (exit != true)
             {
-                switch (input)
+                Console.WriteLine("_______-----Welcome Home-----______");
+                Console.WriteLine("\na. Category");
+                Console.WriteLine("\nb. Product");
+                Console.WriteLine("\nc. Exit");
+
+                switch (Console.ReadLine().ToLower())
                 {
                     case "a":
                         Console.Clear();
                         this.CategoryCatalog();
+                        exit = true;
                         break;
                     case "b":
                         Console.Clear();
                         this.ProductCatalog();
+                        exit = true;
                         break;
                     case "c":
                         exit = true;
@@ -40,83 +39,80 @@ namespace ProductCatalog.Entities
                         break;
                     default:
                         Console.WriteLine("Invalid Operatoin\nTry Again");
-                        Console.Clear();
                         break;
                 }
             }
         }
         public void ProductCatalog()
         {
-            Console.WriteLine("------- Product Catalog --------\n");
-            Console.WriteLine("a. Enter a Product \n");
-            Console.WriteLine("b. List all products\n");
-            Console.WriteLine("c. Delete a Product(Enter Short Code or ID to delete)\n");
-            Console.WriteLine("d. Search a Product(By Id, Name, Short Code, Selling Price Greater than / Less Than / Equal To entered price)\n");
-            Console.WriteLine("e. Exit\n");
-            var input = Console.ReadLine().ToLower();
-            bool Exit = false;
-            while (Exit != true)
+            
+            //var input = Console.ReadLine().ToLower();
+            bool ExitProduct = false;
+            while (ExitProduct != true)
             {
-                this.OperationOnProducts = new OperationOnProducts();
-                switch (input)
+                Console.WriteLine("------- Product Catalog --------\n");
+                Console.WriteLine("a. Enter a Product \n");
+                Console.WriteLine("b. List all products\n");
+                Console.WriteLine("c. Delete a Product(Enter Short Code or ID to delete)\n");
+                Console.WriteLine("d. Search a Product(By Id, Name, Short Code, Selling Price Greater than / Less Than / Equal To entered price)\n");
+                Console.WriteLine("e. Exit\n");
+                // this.OperationOnProducts = new OperationOnProducts();
+                switch (Console.ReadLine().ToLower())
                 {
                     case "a":
-                        OperationOnProducts.AddProduct();
-                        Console.WriteLine("Want To Add More Product? (y/n)");
-                        var sub_Input = Console.ReadLine();
-                        if (sub_Input == "n")
-                        { Exit = true; }
+                        operationOnProducts.AddProduct();
                         break;
                     case "b":
-                        OperationOnProducts.DisplayAllProducts();
+                        operationOnProducts.DisplayAllProducts(); 
+                        
                         break;
                     case "c":
-                        OperationOnProducts.DeleteAProduct();
+                        operationOnProducts.DeleteAProduct();
                         break;
                     case "d":
-                        OperationOnProducts.SearchAProduct();
+                        operationOnProducts.SearchAProduct();
                         break;
                     case "e":
-                        Exit = true;
+                        ExitProduct = true;
                         Console.WriteLine("Exiting..............");
-                        Console.Clear();
-                        this.DisplayCatalog();
+                        // this.DisplayCatalog();
                         break;
                     default:
                         Console.WriteLine("Invalid Operation\nTry Again");
                         break;
-
                 }
+               
             }
         }
         public void CategoryCatalog()
         {
-            Console.WriteLine("-------- Category Catalog --------\n");
-            Console.WriteLine("a. Enter a Category\n");
-            Console.WriteLine("b. List all Categories\n");
-            Console.WriteLine("c. Delete a Category(Enter Short Code or ID to delete)\n");
-            Console.WriteLine("d. Search a Category(By Id, Name or Short Code)\n");
-            Console.WriteLine("e. Exit\n");
-            var input = Console.ReadLine().ToLower();
-            bool Exit = false;
-            while(Exit!=true)
+            
+            //var input = Console.ReadLine().ToLower();
+            bool ExitCategory = false;
+            while(ExitCategory!=true)
             {
-            switch(input)
+                Console.WriteLine("-------- Category Catalog --------\n");
+                Console.WriteLine("a. Enter a Category\n");
+                Console.WriteLine("b. List all Categories\n");
+                Console.WriteLine("c. Delete a Category(Enter Short Code or ID to delete)\n");
+                Console.WriteLine("d. Search a Category(By Id, Name or Short Code)\n");
+                Console.WriteLine("e. Exit\n");
+                switch (Console.ReadLine().ToLower())
             {
                     case "a":
-                        OperationOnCategory.AddCategory();
+                        operationOnCategory.AddCategory();
                         break;
                     case "b":
-                        OperationOnCategory.DisplayCategories();
+                        operationOnCategory.DisplayCategories();
                         break;
                     case "c":
-                        OperationOnCategory.DeleteCategory();
+                        operationOnCategory.DeleteCategory();
                         break;
                     case "d":
-                        OperationOnCategory.SearchCategory();
+                        operationOnCategory.SearchCategory();
                         break;
                     case "e":
-                        Exit = true;
+                        ExitCategory = true;
                         Console.WriteLine("Exiting..............");
                         Console.Clear();
                         this.DisplayCatalog();
