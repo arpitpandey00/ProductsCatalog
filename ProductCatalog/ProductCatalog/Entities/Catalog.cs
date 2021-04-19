@@ -47,11 +47,39 @@ namespace ProductCatalog.Entities
         }
         public void ProductCatalog()
         {
+            Console.WriteLine("------- Product Catalog --------\n");
+            Console.WriteLine("a. Enter a Product \n");
+            Console.WriteLine("b. List all products\n");
+            Console.WriteLine("c. Delete a Product(Enter Short Code or ID to delete)\n");
+            Console.WriteLine("d. Search a Product(By Id, Name, Short Code, Selling Price Greater than / Less Than / Equal To entered price)\n");
+            Console.WriteLine("e. Exit\n");
+            var input = Console.ReadLine().ToLower();
+            bool Exit = false;
+            while (Exit != true)
+            {
+                switch (input)
+                {
 
+                }
+            }
         }
         public void CategoryCatalog()
         {
+            Console.WriteLine("-------- Category Catalog --------\n");
+            Console.WriteLine("a. Enter a Category\n");
+            Console.WriteLine("b. List all Categories\n");
+            Console.WriteLine("c. Delete a Category(Enter Short Code or ID to delete)\n");
+            Console.WriteLine("d. Search a Category(By Id, Name or Short Code)\n");
+            Console.WriteLine("e. Exit\n");
+            var input = Console.ReadLine().ToLower();
+            bool Exit = false;
+            while(Exit!=true)
+            {
+            switch(input)
+            {
 
+            }
+            }
         }
     }
 }
