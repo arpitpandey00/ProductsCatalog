@@ -13,7 +13,7 @@ namespace ProductCatalog.Entities
 
        // public string ShortCode { get; set; }
 
-        public List<Category> Categories { get; set; }
+        public string ProductCategory { get; set; }
 
         public string Description { get; set; }
 

@@ -56,7 +56,6 @@ namespace ProductCatalog.Entities
                 Console.WriteLine("c. Delete a Product(Enter Short Code or ID to delete)\n");
                 Console.WriteLine("d. Search a Product(By Id, Name, Short Code, Selling Price Greater than / Less Than / Equal To entered price)\n");
                 Console.WriteLine("e. Exit\n");
-                // this.OperationOnProducts = new OperationOnProducts();
                 switch (Console.ReadLine().ToLower())
                 {
                     case "a":
@@ -75,10 +74,11 @@ namespace ProductCatalog.Entities
                     case "e":
                         ExitProduct = true;
                         Console.WriteLine("Exiting..............");
-                        // this.DisplayCatalog();
+                        this.DisplayCatalog();
                         break;
                     default:
                         Console.WriteLine("Invalid Operation\nTry Again");
+                       
                         break;
                 }
                
@@ -86,8 +86,6 @@ namespace ProductCatalog.Entities
         }
         public void CategoryCatalog()
         {
-            
-            //var input = Console.ReadLine().ToLower();
             bool ExitCategory = false;
             while(ExitCategory!=true)
             {
