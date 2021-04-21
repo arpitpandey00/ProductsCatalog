@@ -8,6 +8,7 @@ namespace ProductCatalog.OperationOnEntities
 {
     public class OperationOnCategory
     {
+        
         public static List<Category> categoryList = new List<Category>
         {              
                 new Category
@@ -24,6 +25,7 @@ namespace ProductCatalog.OperationOnEntities
           
        public void AddCategory()
         {
+            Console.Clear();
             Console.WriteLine("Enter Category Details :");
             Console.WriteLine($"ID : {Category.AutoIncrement}\n");
             Console.WriteLine("Enter New Category Name : ");
@@ -36,23 +38,30 @@ namespace ProductCatalog.OperationOnEntities
                 Description = description,
             });
             Console.WriteLine("New Catogery Added succesfully");
+           // Console.WriteLine("Press enter to continue");
+            //Console.ReadKey();
 
         }
        public void DisplayCategories()
         {
+            Console.Clear();
             Console.WriteLine("Catogriess Are:");
             foreach (Category c in categoryList)
             {
                 Console.WriteLine("Id : " + c.Id + "\nName : " + c.Name + "\nDescription : " + c.Description + "\nShort Code : Null\n\n\n");
             }
+            Console.WriteLine("Press enter to continue");
+            //Console.ReadKey();
+            Console.Clear();
 
         }
         public void DeleteCategory()
         {
+            Console.Clear();
             bool ExitDelete = false;
             while (ExitDelete != true)
             {
-                Console.WriteLine("----- Deleting Product");
+                Console.WriteLine("----- Deleting Category");
                 Console.WriteLine("a. Delete by Name");
                 Console.WriteLine("b. Delete by Id ");
                 Console.WriteLine("c. Delete by Short Code ");
@@ -60,6 +69,18 @@ namespace ProductCatalog.OperationOnEntities
                 switch (Console.ReadLine().ToLower())
                 {
                     case "a":
+                        Console.WriteLine("Enter Name : ");
+                        string inputName = Console.ReadLine();
+                        var findname = categoryList.Single(s => inputName == s.Name);
+                        categoryList.Remove(findname);
+                        foreach (Product pr in OperationOnProducts.ProductsList)
+                        {
+                            if (pr.ProductCategory == inputName)
+                            {
+                                categoryList.Remove(findname);
+                            }
+                        }
+                        Console.WriteLine("Removed Successfully");
                         break;
                     case "b":
                         Console.WriteLine("Enter Id : ");
@@ -69,27 +90,24 @@ namespace ProductCatalog.OperationOnEntities
                         Console.WriteLine("Removed Successfully");
                         break;
                     case "c":
-                        Console.WriteLine("Enter Name : ");
-                        string inputName = Console.ReadLine();
-                        var findname = categoryList.Single(s => inputName == s.Name);
-                        categoryList.Remove(findname);
-                        Console.WriteLine("Removed Successfully");
                         break;
                     case "d":
                         ExitDelete = true;
                         Console.WriteLine("Exiting..............");
-                        Console.Clear();
                         break;
                     default:
                         Console.WriteLine("Invalid Operation\nTry Again");
                         break;
                 }
+                Console.WriteLine("Press enter to continue");
+                Console.Clear();
             }
 
 
         }
         public void SearchCategory()
         {
+            Console.Clear();
             bool ExitSearch = false;
             while (ExitSearch != true)
             {
@@ -128,6 +146,8 @@ namespace ProductCatalog.OperationOnEntities
                         break;
 
                 }
+                Console.WriteLine("Press enter to continue");
+                Console.Clear();
 
             }
         }

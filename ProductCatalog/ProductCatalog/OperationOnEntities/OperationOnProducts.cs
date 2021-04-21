@@ -13,7 +13,8 @@ namespace ProductCatalog.OperationOnEntities
         
         public void AddProduct()
         {
-            Console.WriteLine("Enter Product Details :");
+            Console.Clear();
+            Console.WriteLine("Enter Product Details :\n");
             Console.WriteLine($"ID : {Product.AutoIncrement}\n");
             Console.WriteLine("Enter Product Name : ");
             string name = Console.ReadLine();
@@ -23,7 +24,7 @@ namespace ProductCatalog.OperationOnEntities
             string description = Console.ReadLine();
             Console.WriteLine("\nEnter Selling Price : ");
             int selllingprice = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter category Of Product");
+            Console.WriteLine("\nEnter category Of Product");
             string category = Console.ReadLine();
             bool iscategoryPresent = false;
             foreach(Category c in OperationOnCategory.categoryList)
@@ -33,6 +34,7 @@ namespace ProductCatalog.OperationOnEntities
             }
             if(iscategoryPresent==true)
             {
+                Console.WriteLine("\nThis category is not Added You Have To Add This Category\n");
                 operationCategory.AddCategory();
             }
             ProductsList.Add(new Product
@@ -43,20 +45,28 @@ namespace ProductCatalog.OperationOnEntities
                 SellingPrice = selllingprice,
                 ProductCategory = category
             }) ;
-            Console.WriteLine("Product Added succesfully");
+            Console.WriteLine("Product Added succesfully\n");
+            Console.WriteLine("Press Enter TO Continue:");
+           
         }
         public void DisplayAllProducts()
         {
+            Console.Clear();
             Console.WriteLine("Products Are:");
             foreach (Product p in ProductsList)
             {
-                Console.WriteLine("Id : " + p.Id + "\nName : " + p.Name + "\nDescription : " + p.Description + "\nShort Code : Null\n\n\n");
+                Console.WriteLine("Id : " + p.Id + "\nName : " + p.Name + "\nDescription : " + p.Description + 
+                    "\nShort Code : Null\n"+"Category :"+p.ProductCategory+"\nManufacturer :" +p.Manufacturer+
+                    "\n Selling Price :"+p.SellingPrice);
             }
+            Console.WriteLine("Press enter to continue");
+            Console.Clear();
 
         }
         public void DeleteAProduct()
         {
             //(Enter Short Code or ID to delete)
+            Console.Clear();
             bool ExitDelete = false;
             while (ExitDelete != true)
             {
@@ -76,10 +86,16 @@ namespace ProductCatalog.OperationOnEntities
                         Console.WriteLine("Removed Successfully");
                         ExitDelete = true;
                         break;
+                    case "c":
+                        ExitDelete = true;
+                        Console.WriteLine("Exiting..............");
+                        break;
                     default:
                         Console.WriteLine("Invalid Operation\nTry Again");
                         break;
                 }
+                Console.WriteLine("Press enter to continue");
+                Console.Clear();
             }
         }
         public List<Product> ProductGreaterThan = new List<Product>();
@@ -87,6 +103,7 @@ namespace ProductCatalog.OperationOnEntities
        
          public void SearchAProduct()
         {
+            Console.Clear();
             bool ExitSearch = false;
             while (ExitSearch != true)
             {
@@ -96,7 +113,7 @@ namespace ProductCatalog.OperationOnEntities
                 Console.WriteLine("c. By Selling Price Greater Than");
                 Console.WriteLine("d. By Selling Price less Than");
                 Console.WriteLine("e. By Selling Price Equal To");
-                Console.WriteLine("f. By Name");
+                Console.WriteLine("f. By Short Code");
                 Console.WriteLine("g. Exit");
                 switch (Console.ReadLine().ToLower())
                 {
@@ -170,18 +187,19 @@ namespace ProductCatalog.OperationOnEntities
                         }
                         break;
                         case "f":
+                        break;
+                        case "g":
                             ExitSearch = true;
                             Console.WriteLine("Exiting..............");
-                            Console.Clear();
-
                             break;
-                    case "g":
-                        break;
                         default:
                             Console.WriteLine("Invalid Operation\nTry Again");
                             break;
 
                     }
+                Console.WriteLine("Press enter to continue");
+                Console.Clear();
+
                 
             }
 

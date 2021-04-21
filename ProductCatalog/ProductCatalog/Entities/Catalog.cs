@@ -74,6 +74,7 @@ namespace ProductCatalog.Entities
                     case "e":
                         ExitProduct = true;
                         Console.WriteLine("Exiting..............");
+                        Console.Clear();
                         this.DisplayCatalog();
                         break;
                     default:
@@ -81,7 +82,9 @@ namespace ProductCatalog.Entities
                        
                         break;
                 }
-               
+                Console.WriteLine("Press enter to continue");
+                Console.ReadKey();
+                Console.Clear();
             }
         }
         public void CategoryCatalog()
@@ -120,6 +123,9 @@ namespace ProductCatalog.Entities
                         break;
 
                 }
+                Console.WriteLine("Press enter to continue");
+                Console.ReadKey();
+                Console.Clear();
             }
         }
     }
