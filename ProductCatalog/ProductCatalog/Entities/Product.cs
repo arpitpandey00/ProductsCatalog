@@ -27,7 +27,6 @@ namespace ProductCatalog.Entities
         public override string ToString()
         {
 
-            // return $"Product {this.Name} is Manufactured by {this.Manufacturer} is for {this.SellingPrice} rupees.";
             return $"ID: {this.Id} Name: {this.Name} Manufacutrer: {this.Manufacturer} ShortCode: {this.ShortCode} Description: {this.Description} Selling Price: {this.SellingPrice}\n";
         }
     }

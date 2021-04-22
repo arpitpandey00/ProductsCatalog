@@ -7,7 +7,6 @@ namespace ProductCatalog
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
             Catalog catalog = new Catalog();
             catalog.DisplayCatalog();
         }

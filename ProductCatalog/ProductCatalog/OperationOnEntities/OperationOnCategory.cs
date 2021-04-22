@@ -49,15 +49,15 @@ namespace ProductCatalog.OperationOnEntities
         };
 
         ShortCodeValidation shortcodevalidation = new ShortCodeValidation();
+        CategoryPropertRequired necessary = new CategoryPropertRequired();
         public void AddCategory()
         {
             Console.Clear();
             Console.WriteLine("Enter Category Details :");
-            //Console.WriteLine($"ID : {Category.AutoIncrement}\n");
             Console.WriteLine("Enter New Category Name : ");
-            string name = Console.ReadLine();
+            string name = necessary.CategoryNamerequired();
             Console.WriteLine("\nEnter Description : ");
-            string description = Console.ReadLine();
+            string description = necessary.CategoryDescriptionRequired();
             Console.WriteLine("\nEnter Short Code : ");
             string shortCode = shortcodevalidation.ShortCodeValidatingCategory();
             categoryList.Add(new Category
@@ -67,17 +67,13 @@ namespace ProductCatalog.OperationOnEntities
                 ShortCode = shortCode
             }) ;
             Console.WriteLine("New Catogery Added succesfully");
-            // Console.WriteLine("Press enter to continue");
-            //Console.ReadKey();
-
-        }
+            }
        public void DisplayCategories()
         {
             Console.Clear();
             Console.WriteLine("Catogriess Are:");
             foreach (Category category in categoryList)
             {
-                //Console.WriteLine("\nId : " + c.Id + "\nName : " + c.Name + "\nDescription : " + c.Description + "\nShort Code : Null\n");
                 Console.WriteLine(category.ToString());            
             }
             Console.ReadKey();
@@ -155,26 +151,18 @@ namespace ProductCatalog.OperationOnEntities
                         Console.WriteLine("Enter Id To Search");
                         int id = Convert.ToInt32(Console.ReadLine());
                         var category = categoryList.Single(single => id == single.Id);
-                        //Console.WriteLine("\nID : " + Products.Id);
-                        //Console.WriteLine("\nName : " + Products.Name);
-                        //Console.WriteLine("\nDescription : " + Products.Description);
                         Console.WriteLine(category.ToString());
-                        //Console.WriteLine("Found Succesfully");
                         break;
                     case "b":
                         Console.WriteLine("Enter Name ");
                         string name = Console.ReadLine();
                         var findname = categoryList.Single(single => name == single.Name);
-                        //Console.WriteLine("Product Id - " + findname.Id + " Name - " + findname.Name + " Description - " + findname.Description);
                         Console.WriteLine(findname.ToString());
                         break;
                     case "c":
                         Console.WriteLine("Enter Short Code To Search");
                         string ShortCode = Console.ReadLine();
                         var findcategory = categoryList.Single(single => ShortCode == single.ShortCode);
-                        //Console.WriteLine("\nID : " + Products.Id);
-                        //Console.WriteLine("\nName : " + Products.Name);
-                        //Console.WriteLine("\nDescription : " + Products.Description);
                         Console.WriteLine(findcategory.ToString());
                         Console.WriteLine("Found Succesfully");
                         break;

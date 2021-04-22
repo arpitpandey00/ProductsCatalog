@@ -59,21 +59,20 @@ namespace ProductCatalog.OperationOnEntities
         ShortCodeValidation shortCodeValidation = new ShortCodeValidation();
         PriceValidation priceValidation = new PriceValidation();
         OperationOnCategory operationCategory = new OperationOnCategory();
+        ProductPropertyRequired necessary = new ProductPropertyRequired();
         
         public void AddProduct()
         {
             Console.Clear();
             Console.WriteLine("Enter Product Details :\n");
-            //Console.WriteLine($"ID : {Product.AutoIncrement}\n");
             Console.WriteLine("Enter Product Name : ");
-            string name = Console.ReadLine();
+            string name = necessary.ProductNameRequired();
             Console.WriteLine("\nEnter Manufacturer Name : ");
-            string manufacturer = Console.ReadLine();
+            string manufacturer = necessary.ProductManufacturerRequired(); ;
             Console.WriteLine("\nEnter Description : ");
-            string description = Console.ReadLine();
+            string description = necessary.ProductDescriptionRequired();
             Console.WriteLine("\nEnter Selling Price : ");
             int sellingprice = priceValidation.PriceValidating(); 
-                //Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\nEnter Short Code : ");
             string shortCode = shortCodeValidation.ShortCodeValidatingproducts();
             Console.WriteLine("\nEnter category Of Product");
@@ -109,9 +108,6 @@ namespace ProductCatalog.OperationOnEntities
             Console.WriteLine("Products Are:");
             foreach (Product products in ProductsList)
             {
-                //Console.WriteLine("\n\nId : " + p.Id + "\nName : " + p.Name + "\nDescription : " + p.Description + 
-                //    "\nShort Code : Null\n"+"Category :"+p.ProductCategory+"\nManufacturer :" +p.Manufacturer+
-                //    "\n Selling Price :"+p.SellingPrice);
                 Console.WriteLine( products.ToString());
             }
             Console.WriteLine("Press enter to continue");
@@ -121,7 +117,6 @@ namespace ProductCatalog.OperationOnEntities
         }
         public void DeleteAProduct()
         {
-            //(Enter Short Code or ID to delete)
             Console.Clear();
             bool ExitDelete = false;
             while (ExitDelete != true)
@@ -183,12 +178,6 @@ namespace ProductCatalog.OperationOnEntities
                     case "a":
                         Console.WriteLine("Enter Id To Search");
                         int id = Convert.ToInt32(Console.ReadLine());
-                        //var Prod = ProductsList.Single(s => id == s.Id);
-                        //Console.WriteLine("\nID : " + Prod.Id);
-                        //Console.WriteLine("\nName : " + Prod.Name);
-                        //Console.WriteLine("\nManufacturer : " + Prod.Manufacturer);
-                        //Console.WriteLine("\nSelling Price : " + Prod.SellingPrice);
-                        //Console.WriteLine("\nDescription : " + Prod.Description);
                         Console.WriteLine(id.ToString());
                         Console.WriteLine("Found Succesfully");
                         break;
@@ -196,8 +185,6 @@ namespace ProductCatalog.OperationOnEntities
                         Console.WriteLine("Enter Name ");
                         string name = Console.ReadLine();
                         var findname = ProductsList.Single(single => name == single.Name);
-                        // Console.WriteLine("Product Id - " + findname.Id + " Name - " + findname.Name + " Manufacturer - " 
-                        //     + findname.Manufacturer + " Description - " + findname.Description + " Selling Price - " + findname.SellingPrice);
                         Console.WriteLine(findname.ToString());
                         break;
                     case "c":
@@ -212,11 +199,6 @@ namespace ProductCatalog.OperationOnEntities
                         }
                         foreach(Product output in ProductGreaterThan)
                         {
-                            //Console.WriteLine($"Id : {output.Id}");
-                            //Console.WriteLine($"Name : {output.Name}");
-                            //Console.WriteLine($"Manufacturer : {output.Manufacturer}");
-                            //Console.WriteLine($"Description : {output.Description}");
-                            //Console.WriteLine($"Selling Price : {output.SellingPrice}");
                             Console.WriteLine(output.ToString());
                         }
                           break;
@@ -232,11 +214,6 @@ namespace ProductCatalog.OperationOnEntities
                         }
                         foreach (Product output1 in ProductLessThan)
                         {
-                            //Console.WriteLine($"Id : {output1.Id}");
-                            //Console.WriteLine($"Name : {output1.Name}");
-                            //Console.WriteLine($"Manufacturer : {output1.Manufacturer}");
-                            //Console.WriteLine($"Description : {output1.Description}");
-                            //Console.WriteLine($"Selling Price : {output1.SellingPrice}");
                             Console.WriteLine(output1.ToString());
                         }
                          break;
@@ -246,11 +223,6 @@ namespace ProductCatalog.OperationOnEntities
                         var PriceEqualsTO = ProductsList.Where(s => s.SellingPrice == Equal).ToList();
                         foreach(Product products in PriceEqualsTO)
                         {
-                            //Console.WriteLine($"Id : {products.Id}");
-                            //Console.WriteLine($"Name : {products.Name}");
-                            //Console.WriteLine($"Manufacturer : {products.Manufacturer}");
-                            //Console.WriteLine($"Description : {products.Description}");
-                            //Console.WriteLine($"Selling Price : {products.SellingPrice}");
                             Console.WriteLine(products.ToString());
                         }
                         break;
@@ -258,9 +230,7 @@ namespace ProductCatalog.OperationOnEntities
                         Console.WriteLine("Enter Short Code : ");
                         string shotcodeToFind = Console.ReadLine();
                         var findshortcode = ProductsList.Single(single => shotcodeToFind == single.ShortCode);
-                        // Console.WriteLine("Product Id - " + findname.Id + " Name - " + findname.Name + " Manufacturer - " 
-                        //     + findname.Manufacturer + " Description - " + findname.Description + " Selling Price - " + findname.SellingPrice);
-                        Console.WriteLine(findshortcode.ToString());
+                         Console.WriteLine(findshortcode.ToString());
                         break;
                         case "g":
                             ExitSearch = true;

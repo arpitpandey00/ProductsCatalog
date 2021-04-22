@@ -62,14 +62,50 @@ namespace ProductCatalog.Entities
                         operationOnProducts.AddProduct();
                         break;
                     case "b":
+                        try
+                        {
                         operationOnProducts.DisplayAllProducts(); 
-                        
+                        }
+                        catch(Exception)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("No Products Avaliable");
+                            Console.WriteLine("Press Enter For Main Menu");
+                            Console.ReadKey();
+                            Console.Clear();
+                            this.DisplayCatalog();
+                        }
                         break;
                     case "c":
-                        operationOnProducts.DeleteAProduct();
+                        try
+                        {
+                            operationOnProducts.DeleteAProduct();
+                        }
+                        catch (Exception)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Products Not Avaliable Or Already Deteted");
+                            Console.WriteLine("Press Enter For Main Menu");
+                            Console.ReadKey();
+                            Console.Clear();
+                            this.DisplayCatalog();
+                        }
                         break;
                     case "d":
-                        operationOnProducts.SearchAProduct();
+                        try
+                        {
+                            operationOnProducts.SearchAProduct();
+                        }
+                        catch (Exception)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Products Not Avaliable of this kind");
+                            Console.WriteLine("Press Enter For Main Menu");
+                            Console.ReadKey();
+                            Console.Clear();
+                            this.DisplayCatalog();
+                        }
+                        
                         break;
                     case "e":
                         ExitProduct = true;
@@ -104,13 +140,49 @@ namespace ProductCatalog.Entities
                         operationOnCategory.AddCategory();
                         break;
                     case "b":
+                        try
+                        {
                         operationOnCategory.DisplayCategories();
+                        }
+                        catch(Exception)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("No category Avaliable");
+                            Console.WriteLine("Press Enter For Main Menu");
+                            Console.ReadKey();
+                            Console.Clear();
+                            this.DisplayCatalog();
+                        }
                         break;
                     case "c":
-                        operationOnCategory.DeleteCategory();
+                        try
+                        {
+                            operationOnCategory.DeleteCategory();
+                        }
+                        catch (Exception)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("No category Avaliable or Already Deleted");
+                            Console.WriteLine("Press Enter For Main Menu");
+                            Console.ReadKey();
+                            Console.Clear();
+                            this.DisplayCatalog();
+                        }
                         break;
                     case "d":
-                        operationOnCategory.SearchCategory();
+                        try
+                        {
+                            operationOnCategory.SearchCategory();
+                        }
+                        catch (Exception)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("No category Avaliable of this kind");
+                            Console.WriteLine("Press Enter For Main Menu");
+                            Console.ReadKey();
+                            Console.Clear();
+                            this.DisplayCatalog();
+                        }
                         break;
                     case "e":
                         ExitCategory = true;

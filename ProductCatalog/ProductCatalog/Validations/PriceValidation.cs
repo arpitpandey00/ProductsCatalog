@@ -16,6 +16,7 @@ namespace ProductCatalog.Validations
                 {
                     Console.WriteLine("Price should be greter than 0");
                     PriceValidating();
+
                 }
             }
             catch (Exception)
