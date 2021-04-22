@@ -12,6 +12,11 @@ namespace ProductCatalog.Validations
           try
             {
                 ProductPrice = Convert.ToInt32(Console.ReadLine());
+                if(ProductPrice<=0)
+                {
+                    Console.WriteLine("Price should be greter than 0");
+                    PriceValidating();
+                }
             }
             catch (Exception)
             {
