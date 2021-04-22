@@ -20,7 +20,29 @@ namespace ProductCatalog.OperationOnEntities
                 {
                     Name="Food",
                     Description="Daily accomodation"
-                }
+                },
+              new Category   {
+       Name="Technology",
+    Description= "Gadgets",
+    //ShortCode:"Tech"
+  },
+  new Category{
+    
+    Name="Grocery",
+    Description="Household Items",
+    //ShortCode="Groc"
+  },
+  new Category{
+       Name="Toys",
+    Description= "For Kids",
+    //ShortCode="tykd"
+  },
+  new Category{
+        
+    Name="Stationary",
+    Description= "Study",
+    //ShortCode="stud"
+  },
         };
           
        public void AddCategory()
@@ -48,10 +70,10 @@ namespace ProductCatalog.OperationOnEntities
             Console.WriteLine("Catogriess Are:");
             foreach (Category c in categoryList)
             {
-                Console.WriteLine("Id : " + c.Id + "\nName : " + c.Name + "\nDescription : " + c.Description + "\nShort Code : Null\n\n\n");
+                Console.WriteLine("\nId : " + c.Id + "\nName : " + c.Name + "\nDescription : " + c.Description + "\nShort Code : Null\n");
             }
+            Console.ReadKey();
             Console.WriteLine("Press enter to continue");
-            //Console.ReadKey();
             Console.Clear();
 
         }
@@ -71,15 +93,9 @@ namespace ProductCatalog.OperationOnEntities
                     case "a":
                         Console.WriteLine("Enter Name : ");
                         string inputName = Console.ReadLine();
-                        var findname = categoryList.Single(s => inputName == s.Name);
+                        Category findname = categoryList.Single(s => inputName == s.Name);
                         categoryList.Remove(findname);
-                        foreach (Product pr in OperationOnProducts.ProductsList)
-                        {
-                            if (pr.ProductCategory == inputName)
-                            {
-                                categoryList.Remove(findname);
-                            }
-                        }
+                        OperationOnProducts.ProductsList.RemoveAll(x => x.ProductCategory == inputName);
                         Console.WriteLine("Removed Successfully");
                         break;
                     case "b":
@@ -87,6 +103,7 @@ namespace ProductCatalog.OperationOnEntities
                         int id = Convert.ToInt32(Console.ReadLine());
                         var findid = categoryList.Single(s => id == s.Id);
                         categoryList.Remove(findid);
+                        OperationOnProducts.ProductsList.RemoveAll(x => x.ProductCategory == findid.Name);
                         Console.WriteLine("Removed Successfully");
                         break;
                     case "c":
@@ -97,8 +114,10 @@ namespace ProductCatalog.OperationOnEntities
                         break;
                     default:
                         Console.WriteLine("Invalid Operation\nTry Again");
+                        Console.ReadKey();
                         break;
                 }
+
                 Console.WriteLine("Press enter to continue");
                 Console.Clear();
             }
@@ -147,6 +166,7 @@ namespace ProductCatalog.OperationOnEntities
 
                 }
                 Console.WriteLine("Press enter to continue");
+                Console.ReadKey();
                 Console.Clear();
 
             }

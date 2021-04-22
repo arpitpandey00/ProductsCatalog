@@ -8,7 +8,54 @@ namespace ProductCatalog.OperationOnEntities
 {
     public class OperationOnProducts
     {
-        public static List<Product> ProductsList = new List<Product>();
+        public static List<Product> ProductsList = new List<Product>
+        {
+           new Product  {
+     // Id:1,
+      Name="Pen",
+      Manufacturer="Natraj",
+      Description="Study Material",
+      SellingPrice=12,
+     // ShortCode:"pn12",
+      ProductCategory="Stationary"
+    },
+    new Product{
+     // Id:2,
+      Name="Hanger",
+      Manufacturer="Maya",
+      Description="For Clothes",
+      SellingPrice=30,
+     // ShortCode:"hg30",
+      ProductCategory="Grocery"
+    },
+    new Product{
+      //Id:3,
+      Name="Mobile",
+      Manufacturer="Oneplus",
+      Description="Essintail item",
+      SellingPrice=30000,
+      //ShortCode:"op30",
+      ProductCategory="Technology"
+    },
+    new Product{
+     // Id:4,
+      Name="Smart Watch",
+      Manufacturer="Mi",
+      Description="Health Measuring",
+      SellingPrice=10000,
+     // ShortCode:"mi10",
+      ProductCategory="Technology"
+    },
+    new Product{
+     // Id:5,
+      Name="Pencil",
+      Manufacturer="Apsara",
+      Description="Study Material",
+      SellingPrice=7,
+      //ShortCode:"pn07",
+      ProductCategory="Stationary"
+    }
+        };
         OperationOnCategory operationCategory = new OperationOnCategory();
         
         public void AddProduct()
@@ -29,10 +76,10 @@ namespace ProductCatalog.OperationOnEntities
             bool iscategoryPresent = false;
             foreach(Category c in OperationOnCategory.categoryList)
             {
-                if (c.Name != category)
+                if (c.Name.ToLower() == category.ToLower())
                     iscategoryPresent = true;                   
             }
-            if(iscategoryPresent==true)
+            if(iscategoryPresent==false)
             {
                 Console.WriteLine("\nThis category is not Added You Have To Add This Category\n");
                 operationCategory.AddCategory();
@@ -55,11 +102,12 @@ namespace ProductCatalog.OperationOnEntities
             Console.WriteLine("Products Are:");
             foreach (Product p in ProductsList)
             {
-                Console.WriteLine("Id : " + p.Id + "\nName : " + p.Name + "\nDescription : " + p.Description + 
+                Console.WriteLine("\n\nId : " + p.Id + "\nName : " + p.Name + "\nDescription : " + p.Description + 
                     "\nShort Code : Null\n"+"Category :"+p.ProductCategory+"\nManufacturer :" +p.Manufacturer+
                     "\n Selling Price :"+p.SellingPrice);
             }
             Console.WriteLine("Press enter to continue");
+            Console.ReadKey();
             Console.Clear();
 
         }
@@ -95,6 +143,7 @@ namespace ProductCatalog.OperationOnEntities
                         break;
                 }
                 Console.WriteLine("Press enter to continue");
+                Console.ReadKey();
                 Console.Clear();
             }
         }
@@ -197,7 +246,7 @@ namespace ProductCatalog.OperationOnEntities
                             break;
 
                     }
-                Console.WriteLine("Press enter to continue");
+               
                 Console.Clear();
 
                 
